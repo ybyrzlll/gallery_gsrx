@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册展览馆</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏分类导航 -->
+        <aside class="sidebar" id="sidebar">
+            <h2>照片分类</h2>
+            <ul class="category-list" id="categoryList">
+                <!-- 分类将通过JavaScript动态生成 -->
+            </ul>
+            <button class="toggle-sidebar" id="toggleSidebar">‹</button>
+        </aside>
+        <button class="expand-sidebar" id="expandSidebar">›</button>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <!-- 首页 - 分组封面展示 -->
+            <section class="gallery-section" id="homeSection">
+                <h1>相册展览馆</h1>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- 分组封面将通过JavaScript动态生成 -->
+                </div>
+            </section>
+
+            <!-- 分组详情页 -->
+            <section class="group-detail-section" id="groupDetailSection" style="display: none;">
+                <div class="group-header">
+                    <button class="back-button" id="backButton">← 返回首页</button>
+                    <h2 id="groupTitle">分组标题</h2>
+                </div>
+                <div class="photo-grid" id="photoGrid">
+                    <!-- 分组内照片将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 照片查看模态框 -->
+    <div class="modal" id="photoModal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="photo-info">
+                <h3 id="photoTitle">照片标题</h3>
+                <p id="photoDescription">照片描述</p>
+            </div>
+            <div class="modal-navigation">
+                <button id="prevPhoto">上一张</button>
+                <button id="nextPhoto">下一张</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

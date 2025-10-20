@@ -1,0 +1,420 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    transition: width 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    /* 自适应高度，避免滚动条 */
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    transform: translateX(-190px);
+}
+
+.sidebar.collapsed .category-list,
+.sidebar.collapsed h2 {
+    display: none;
+}
+
+/* 分类列表自适应 */
+.category-list {
+    max-height: calc(100vh - 120px); /* 减去标题和padding的高度 */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #34495e #2c3e50;
+}
+
+.category-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.category-list::-webkit-scrollbar-track {
+    background: #2c3e50;
+}
+
+.category-list::-webkit-scrollbar-thumb {
+    background: #34495e;
+    border-radius: 3px;
+}
+
+.category-list::-webkit-scrollbar-thumb:hover {
+    background: #3498db;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    border-bottom: 2px solid #34495e;
+    padding-bottom: 10px;
+}
+
+.category-list {
+    list-style: none;
+}
+
+.category-item {
+    padding: 12px 15px;
+    margin: 5px 0;
+    background: #34495e;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.category-item:hover {
+    background: #3498db;
+}
+
+.category-item.active {
+    background: #e74c3c;
+}
+
+/* 折叠/展开按钮样式 */
+.toggle-sidebar {
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.toggle-sidebar:hover {
+    background: #34495e;
+}
+
+/* 展开按钮样式（侧边栏收起时显示） */
+.expand-sidebar {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 99;
+}
+
+.expand-sidebar:hover {
+    background: #34495e;
+}
+
+.sidebar.collapsed ~ .expand-sidebar {
+    display: flex;
+}
+
+.sidebar.collapsed .toggle-sidebar {
+    display: none;
+}
+
+/* 主内容区域 */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.expanded {
+    margin-left: 60px;
+}
+
+/* 首页样式 */
+.gallery-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.group-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.group-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.group-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.group-info {
+    padding: 15px;
+}
+
+.group-info h3 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.group-info p {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+/* 分组详情页样式 */
+.group-detail-section {
+    animation: fadeIn 0.5s ease;
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.back-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #2980b9;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.photo-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.photo-caption {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+/* 模态框样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 70vh;
+    display: block;
+    margin: 0 auto;
+}
+
+.photo-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-navigation {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-navigation button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-navigation button:hover {
+    background: #2980b9;
+}
+
+.modal-navigation button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-height: 300px; /* 移动端限制侧边栏高度 */
+    }
+    
+    .category-list {
+        max-height: 200px; /* 移动端分类列表高度 */
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    /* 移动端隐藏折叠按钮 */
+    .toggle-sidebar,
+    .expand-sidebar {
+        display: none !important;
+    }
+}
+
+/* 中等屏幕适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main-content {
+        margin-left: 200px;
+    }
+    
+    .main-content.expanded {
+        margin-left: 60px;
+    }
+}
+
+/* 大屏幕适配 */
+@media (min-width: 1025px) {
+    .sidebar {
+        width: 280px; /* 大屏幕增加侧边栏宽度 */
+    }
+    
+    .main-content {
+        margin-left: 280px;
+    }
+    
+    .main-content.expanded {
+        margin-left: 60px;
+    }
+}

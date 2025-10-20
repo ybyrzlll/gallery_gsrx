@@ -1,0 +1,112 @@
+{
+  "categories": [
+    {
+      "id": "wedding",
+      "name": "婚礼风",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "academic",
+      "name": "学院风",
+      "color": "#3498db"
+    },
+    {
+      "id": "october2025",
+      "name": "2025年10月拍摄",
+      "color": "#2ecc71"
+    },
+    {
+      "id": "portrait",
+      "name": "人像摄影",
+      "color": "#9b59b6"
+    },
+    {
+      "id": "landscape",
+      "name": "风景摄影",
+      "color": "#f39c12"
+    }
+  ],
+  "groups": [
+    {
+      "id": "group1",
+      "name": "浪漫婚礼时刻",
+      "category": "wedding",
+      "description": "记录美好婚礼瞬间",
+      "coverImage": "https://picsum.photos/400/300?random=1",
+      "photos": [
+        {
+          "id": "photo1-1",
+          "title": "交换戒指",
+          "image": "https://picsum.photos/600/400?random=11",
+          "description": "神圣的戒指交换仪式"
+        },
+        {
+          "id": "photo1-2",
+          "title": "新人合影",
+          "image": "https://picsum.photos/600/400?random=12",
+          "description": "幸福的新人合影"
+        },
+        {
+          "id": "photo1-3",
+          "title": "婚礼现场",
+          "image": "https://picsum.photos/600/400?random=13",
+          "description": "浪漫的婚礼布置"
+        }
+      ]
+    },
+    {
+      "id": "group2",
+      "name": "校园青春记忆",
+      "category": "academic",
+      "description": "校园生活的美好时光",
+      "coverImage": "https://picsum.photos/400/300?random=2",
+      "photos": [
+        {
+          "id": "photo2-1",
+          "title": "图书馆学习",
+          "image": "https://picsum.photos/600/400?random=21",
+          "description": "安静的图书馆学习时光"
+        },
+        {
+          "id": "photo2-2",
+          "title": "校园漫步",
+          "image": "https://picsum.photos/600/400?random=22",
+          "description": "校园林荫道漫步"
+        },
+        {
+          "id": "photo2-3",
+          "title": "毕业典礼",
+          "image": "https://picsum.photos/600/400?random=23",
+          "description": "隆重的毕业典礼"
+        }
+      ]
+    },
+    {
+      "id": "group3",
+      "name": "秋日风光",
+      "category": "october2025",
+      "description": "2025年10月的秋日美景",
+      "coverImage": "https://picsum.photos/400/300?random=3",
+      "photos": [
+        {
+          "id": "photo3-1",
+          "title": "金黄落叶",
+          "image": "https://picsum.photos/600/400?random=31",
+          "description": "铺满金黄落叶的小路"
+        },
+        {
+          "id": "photo3-2",
+          "title": "秋日湖泊",
+          "image": "https://picsum.photos/600/400?random=32",
+          "description": "宁静的秋日湖景"
+        },
+        {
+          "id": "photo3-3",
+          "title": "丰收季节",
+          "image": "https://picsum.photos/600/400?random=33",
+          "description": "丰收的喜悦"
+        }
+      ]
+    }
+  ]
+}
