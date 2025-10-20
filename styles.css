@@ -41,29 +41,70 @@ body {
     display: none;
 }
 
-/* 分类列表自适应 */
+/* 分类列表自适应 - 无滚动条 */
 .category-list {
-    max-height: calc(100vh - 120px); /* 减去标题和padding的高度 */
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #34495e #2c3e50;
+    /* 移除最大高度限制，让内容自然流动 */
+    overflow-y: visible;
+    /* 确保列表项间距合理 */
+    padding: 0;
+    margin: 0;
 }
 
-.category-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.category-list::-webkit-scrollbar-track {
-    background: #2c3e50;
-}
-
-.category-list::-webkit-scrollbar-thumb {
+/* 分类项样式优化 */
+.category-item {
+    padding: 12px 15px;
+    margin: 5px 0;
     background: #34495e;
-    border-radius: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    /* 确保项目高度固定 */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
-.category-list::-webkit-scrollbar-thumb:hover {
+.category-item:hover {
     background: #3498db;
+}
+
+.category-item.active {
+    background: #e74c3c;
+}
+
+/* 侧边栏整体高度优化 */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    /* 移除overflow-y，让内容自然流动 */
+    overflow-y: visible;
+    transition: width 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    /* 使用flex布局确保内容正确排列 */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    border-bottom: 2px solid #34495e;
+    padding-bottom: 10px;
+    /* 固定标题高度 */
+    flex-shrink: 0;
+}
+
+/* 分类列表容器使用flex布局 */
+.category-list {
+    flex: 1;
+    overflow-y: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .sidebar h2 {
@@ -363,11 +404,14 @@ body {
         position: static;
         width: 100%;
         height: auto;
-        max-height: 300px; /* 移动端限制侧边栏高度 */
+        /* 移动端恢复正常布局 */
+        display: block;
+        max-height: none;
     }
     
     .category-list {
-        max-height: 200px; /* 移动端分类列表高度 */
+        max-height: none;
+        display: block;
     }
     
     .main-content {
