@@ -1,110 +1,129 @@
 {
-  "categories": [
+  "tags": [
     {
-      "id": "wedding",
-      "name": "婚礼风",
+      "id": "family",
+      "name": "家庭",
       "color": "#e74c3c"
     },
     {
-      "id": "academic",
-      "name": "学院风",
+      "id": "travel",
+      "name": "旅行",
       "color": "#3498db"
     },
     {
-      "id": "october2025",
-      "name": "2025年10月拍摄",
+      "id": "nature",
+      "name": "自然",
       "color": "#2ecc71"
     },
     {
       "id": "portrait",
-      "name": "人像摄影",
+      "name": "人像",
       "color": "#9b59b6"
     },
     {
-      "id": "landscape",
-      "name": "风景摄影",
+      "id": "urban",
+      "name": "城市",
       "color": "#f39c12"
+    },
+    {
+      "id": "food",
+      "name": "美食",
+      "color": "#e67e22"
+    },
+    {
+      "id": "event",
+      "name": "活动",
+      "color": "#8e44ad"
     }
   ],
   "groups": [
     {
       "id": "group1",
-      "name": "浪漫婚礼时刻",
-      "category": "wedding",
-      "description": "记录美好婚礼瞬间",
-      "coverImage": "https://picsum.photos/400/300?random=1",
+      "name": "视频聊天",
+      "description": "视频聊天",
+      "coverImage": "images/scr1.jpg",
+      "tags": ["scr", "event"],
       "photos": [
         {
           "id": "photo1-1",
-          "title": "交换戒指",
-          "image": "https://picsum.photos/600/400?random=11",
-          "description": "神圣的戒指交换仪式"
+          "title": "全家福合影",
+          "image": "images/scr2.jpg",
+          "description": "温馨的全家福合影",
+          "tags": ["scr", "portrait"]
         },
         {
           "id": "photo1-2",
-          "title": "新人合影",
-          "image": "https://picsum.photos/600/400?random=12",
-          "description": "幸福的新人合影"
+          "title": "生日蛋糕",
+          "image": "images/scr3.jpg",
+          "description": "美味的生日蛋糕",
+          "tags": ["scr", "food", "event"]
         },
         {
           "id": "photo1-3",
-          "title": "婚礼现场",
-          "image": "https://picsum.photos/600/400?random=13",
-          "description": "浪漫的婚礼布置"
+          "title": "家庭聚餐",
+          "image": "images/scr4.jpg",
+          "description": "欢乐的家庭聚餐时光",
+          "tags": ["scr", "food"]
         }
       ]
     },
     {
       "id": "group2",
-      "name": "校园青春记忆",
-      "category": "academic",
-      "description": "校园生活的美好时光",
-      "coverImage": "https://picsum.photos/400/300?random=2",
+      "name": "直播",
+      "description": "直播",
+      "coverImage": "images/zb1.jpg",
+      "tags": ["zb", "urban", "food"],
       "photos": [
         {
           "id": "photo2-1",
-          "title": "图书馆学习",
+          "title": "东京塔夜景",
           "image": "https://picsum.photos/600/400?random=21",
-          "description": "安静的图书馆学习时光"
+          "description": "壮观的东京塔夜景",
+          "tags": ["travel", "urban", "night"]
         },
         {
           "id": "photo2-2",
-          "title": "校园漫步",
+          "title": "京都寺庙",
           "image": "https://picsum.photos/600/400?random=22",
-          "description": "校园林荫道漫步"
+          "description": "古老的京都寺庙",
+          "tags": ["travel", "urban", "culture"]
         },
         {
           "id": "photo2-3",
-          "title": "毕业典礼",
+          "title": "寿司美食",
           "image": "https://picsum.photos/600/400?random=23",
-          "description": "隆重的毕业典礼"
+          "description": "地道的日本寿司",
+          "tags": ["travel", "food"]
         }
       ]
     },
     {
       "id": "group3",
-      "name": "秋日风光",
-      "category": "october2025",
-      "description": "2025年10月的秋日美景",
-      "coverImage": "https://picsum.photos/400/300?random=3",
+      "name": "合照",
+      "description": "合照",
+      "coverImage": "images/hezhao1.jpg",
+      "tags": ["hezhao", "travel"],
       "photos": [
         {
           "id": "photo3-1",
-          "title": "金黄落叶",
+          "title": "山间日出",
           "image": "https://picsum.photos/600/400?random=31",
-          "description": "铺满金黄落叶的小路"
+          "description": "壮丽的山间日出",
+          "tags": ["nature", "travel"]
         },
         {
           "id": "photo3-2",
-          "title": "秋日湖泊",
+          "title": "森林小径",
           "image": "https://picsum.photos/600/400?random=32",
-          "description": "宁静的秋日湖景"
+          "description": "宁静的森林小径",
+          "tags": ["nature"]
         },
         {
           "id": "photo3-3",
-          "title": "丰收季节",
+          "title": "海边日落",
           "image": "https://picsum.photos/600/400?random=33",
-          "description": "丰收的喜悦"
+          "description": "浪漫的海边日落",
+          "tags": ["nature", "travel"]
         }
       ]
     }

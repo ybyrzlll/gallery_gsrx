@@ -1,84 +1,18 @@
-// 相册数据
-const galleryData = {
-    categories: [
-        { id: 'wedding', name: '婚礼风', color: '#e74c3c' },
-        { id: 'academic', name: '学院风', color: '#3498db' },
-        { id: 'october2025', name: '2025年10月拍摄', color: '#2ecc71' },
-        { id: 'portrait', name: '人像摄影', color: '#9b59b6' },
-        { id: 'landscape', name: '风景摄影', color: '#f39c12' }
-    ],
-    groups: [
-        {
-            id: 'group1',
-            name: '浪漫婚礼时刻',
-            category: 'wedding',
-            description: '记录美好婚礼瞬间',
-            coverImage: 'https://picsum.photos/400/300?random=1',
-            photos: [
-                { id: 'photo1-1', title: '交换戒指', image: 'https://picsum.photos/600/400?random=11', description: '神圣的戒指交换仪式' },
-                { id: 'photo1-2', title: '新人合影', image: 'https://picsum.photos/600/400?random=12', description: '幸福的新人合影' },
-                { id: 'photo1-3', title: '婚礼现场', image: 'https://picsum.photos/600/400?random=13', description: '浪漫的婚礼布置' }
-            ]
-        },
-        {
-            id: 'group2',
-            name: '校园青春记忆',
-            category: 'academic',
-            description: '校园生活的美好时光',
-            coverImage: 'https://picsum.photos/400/300?random=2',
-            photos: [
-                { id: 'photo2-1', title: '图书馆学习', image: 'https://picsum.photos/600/400?random=21', description: '安静的图书馆学习时光' },
-                { id: 'photo2-2', title: '校园漫步', image: 'https://picsum.photos/600/400?random=22', description: '校园林荫道漫步' },
-                { id: 'photo2-3', title: '毕业典礼', image: 'https://picsum.photos/600/400?random=23', description: '隆重的毕业典礼' }
-            ]
-        },
-        {
-            id: 'group3',
-            name: '秋日风光',
-            category: 'october2025',
-            description: '2025年10月的秋日美景',
-            coverImage: 'https://picsum.photos/400/300?random=3',
-            photos: [
-                { id: 'photo3-1', title: '金黄落叶', image: 'https://picsum.photos/600/400?random=31', description: '铺满金黄落叶的小路' },
-                { id: 'photo3-2', title: '秋日湖泊', image: 'https://picsum.photos/600/400?random=32', description: '宁静的秋日湖景' },
-                { id: 'photo3-3', title: '丰收季节', image: 'https://picsum.photos/600/400?random=33', description: '丰收的喜悦' }
-            ]
-        },
-        {
-            id: 'group4',
-            name: '个性肖像',
-            category: 'portrait',
-            description: '展现个性的人像摄影',
-            coverImage: 'https://picsum.photos/400/300?random=4',
-            photos: [
-                { id: 'photo4-1', title: '黑白肖像', image: 'https://picsum.photos/600/400?random=41', description: '经典黑白人像' },
-                { id: 'photo4-2', title: '自然光人像', image: 'https://picsum.photos/600/400?random=42', description: '自然光下的肖像' }
-            ]
-        },
-        {
-            id: 'group5',
-            name: '山水风光',
-            category: 'landscape',
-            description: '壮丽的自然风光',
-            coverImage: 'https://picsum.photos/400/300?random=5',
-            photos: [
-                { id: 'photo5-1', title: '日出山峰', image: 'https://picsum.photos/600/400?random=51', description: '壮观的日出山景' },
-                { id: 'photo5-2', title: '海边日落', image: 'https://picsum.photos/600/400?random=52', description: '浪漫的海边日落' }
-            ]
-        }
-    ]
-};
+// 相册数据（从data.json加载）
+let galleryData = {};
 
 // 当前状态
 let currentState = {
-    activeCategory: 'all',
+    activeTag: 'all',
     currentGroup: null,
-    currentPhotoIndex: 0
+    currentPhotoIndex: 0,
+    tagViewMode: false, // 是否在标签浏览模式
+    currentTagPhotos: [] // 当前标签下的所有照片
 };
 
 // DOM元素
 const elements = {
-    categoryList: document.getElementById('categoryList'),
+    tagList: document.getElementById('categoryList'),
     galleryGrid: document.getElementById('galleryGrid'),
     homeSection: document.getElementById('homeSection'),
     groupDetailSection: document.getElementById('groupDetailSection'),
@@ -98,33 +32,50 @@ const elements = {
     mainContent: document.querySelector('.main-content')
 };
 
+// 加载数据文件
+async function loadGalleryData() {
+    try {
+        const response = await fetch('data.json');
+        galleryData = await response.json();
+        initApp();
+    } catch (error) {
+        console.error('加载数据失败:', error);
+    }
+}
+
 // 初始化应用
 function initApp() {
-    renderCategories();
+    renderTags();
     renderGallery();
     setupEventListeners();
 }
 
-// 渲染分类列表
-function renderCategories() {
-    const categories = [
+// 渲染标签列表
+function renderTags() {
+    const tags = [
         { id: 'all', name: '全部照片', color: '#34495e' },
-        ...galleryData.categories
+        ...galleryData.tags
     ];
 
-    elements.categoryList.innerHTML = categories.map(category => `
-        <li class="category-item ${currentState.activeCategory === category.id ? 'active' : ''}" 
-            data-category="${category.id}">
-            ${category.name}
+    elements.tagList.innerHTML = tags.map(tag => `
+        <li class="category-item ${currentState.activeTag === tag.id ? 'active' : ''}" 
+            data-tag="${tag.id}">
+            <span class="tag-color" style="background-color: ${tag.color}"></span>
+            ${tag.name}
         </li>
     `).join('');
 }
 
 // 渲染相册网格
 function renderGallery() {
-    const filteredGroups = currentState.activeCategory === 'all' 
+    if (currentState.tagViewMode) {
+        renderTagPhotos();
+        return;
+    }
+
+    const filteredGroups = currentState.activeTag === 'all' 
         ? galleryData.groups 
-        : galleryData.groups.filter(group => group.category === currentState.activeCategory);
+        : galleryData.groups.filter(group => group.tags.includes(currentState.activeTag));
 
     elements.galleryGrid.innerHTML = filteredGroups.map(group => `
         <div class="group-card" data-group="${group.id}">
@@ -132,10 +83,57 @@ function renderGallery() {
             <div class="group-info">
                 <h3>${group.name}</h3>
                 <p>${group.description}</p>
+                <div class="group-tags">
+                    ${group.tags.map(tagId => {
+                        const tag = galleryData.tags.find(t => t.id === tagId);
+                        return tag ? `<span class="tag-badge" style="background-color: ${tag.color}">${tag.name}</span>` : '';
+                    }).join('')}
+                </div>
                 <p class="photo-count">${group.photos.length} 张照片</p>
             </div>
         </div>
     `).join('');
+}
+
+// 渲染标签下的所有照片
+function renderTagPhotos() {
+    // 收集所有包含当前标签的照片
+    currentState.currentTagPhotos = [];
+    
+    galleryData.groups.forEach(group => {
+        group.photos.forEach(photo => {
+            if (photo.tags.includes(currentState.activeTag)) {
+                currentState.currentTagPhotos.push({
+                    ...photo,
+                    groupName: group.name,
+                    groupId: group.id
+                });
+            }
+        });
+    });
+
+    elements.galleryGrid.innerHTML = currentState.currentTagPhotos.map((photo, index) => `
+        <div class="photo-item" data-photo="${photo.id}" data-index="${index}">
+            <img src="${photo.image}" alt="${photo.title}" class="photo-thumbnail">
+            <div class="photo-caption">
+                <h4>${photo.title}</h4>
+                <p>${photo.description}</p>
+                <div class="photo-tags">
+                    ${photo.tags.map(tagId => {
+                        const tag = galleryData.tags.find(t => t.id === tagId);
+                        return tag ? `<span class="tag-badge small" style="background-color: ${tag.color}">${tag.name}</span>` : '';
+                    }).join('')}
+                </div>
+                <span class="photo-source">来自：${photo.groupName}</span>
+            </div>
+        </div>
+    `).join('');
+
+    // 更新页面标题
+    const tag = galleryData.tags.find(t => t.id === currentState.activeTag);
+    if (tag) {
+        elements.groupTitle.textContent = `标签：${tag.name}`;
+    }
 }
 
 // 渲染分组详情
@@ -144,12 +142,19 @@ function renderGroupDetail(groupId) {
     if (!group) return;
 
     currentState.currentGroup = group;
+    currentState.tagViewMode = false;
     elements.groupTitle.textContent = group.name;
     
     elements.photoGrid.innerHTML = group.photos.map((photo, index) => `
         <div class="photo-item" data-photo="${photo.id}" data-index="${index}">
             <img src="${photo.image}" alt="${photo.title}" class="photo-thumbnail">
             <div class="photo-caption">${photo.title}</div>
+            <div class="photo-tags">
+                ${photo.tags.map(tagId => {
+                    const tag = galleryData.tags.find(t => t.id === tagId);
+                    return tag ? `<span class="tag-badge small" style="background-color: ${tag.color}">${tag.name}</span>` : '';
+                }).join('')}
+            </div>
         </div>
     `).join('');
 
@@ -160,10 +165,18 @@ function renderGroupDetail(groupId) {
 
 // 显示照片模态框
 function showPhotoModal(photoIndex) {
-    const group = currentState.currentGroup;
-    if (!group || !group.photos[photoIndex]) return;
+    let photo, group;
+    
+    if (currentState.tagViewMode) {
+        photo = currentState.currentTagPhotos[photoIndex];
+        group = galleryData.groups.find(g => g.id === photo.groupId);
+    } else {
+        group = currentState.currentGroup;
+        photo = group.photos[photoIndex];
+    }
+    
+    if (!photo) return;
 
-    const photo = group.photos[photoIndex];
     currentState.currentPhotoIndex = photoIndex;
 
     elements.modalImage.src = photo.image;
@@ -172,8 +185,9 @@ function showPhotoModal(photoIndex) {
     elements.photoDescription.textContent = photo.description;
 
     // 更新导航按钮状态
+    const totalPhotos = currentState.tagViewMode ? currentState.currentTagPhotos.length : group.photos.length;
     elements.prevPhoto.disabled = photoIndex === 0;
-    elements.nextPhoto.disabled = photoIndex === group.photos.length - 1;
+    elements.nextPhoto.disabled = photoIndex === totalPhotos - 1;
 
     elements.photoModal.style.display = 'flex';
 }
@@ -192,14 +206,22 @@ function setupEventListeners() {
         elements.mainContent.classList.remove('expanded');
     });
 
-    // 分类点击事件
-    elements.categoryList.addEventListener('click', (e) => {
-        const categoryItem = e.target.closest('.category-item');
-        if (categoryItem) {
-            const categoryId = categoryItem.dataset.category;
-            currentState.activeCategory = categoryId;
-            renderCategories();
+    // 标签点击事件
+    elements.tagList.addEventListener('click', (e) => {
+        const tagItem = e.target.closest('.category-item');
+        if (tagItem) {
+            const tagId = tagItem.dataset.tag;
+            currentState.activeTag = tagId;
+            currentState.tagViewMode = tagId !== 'all';
+            renderTags();
             renderGallery();
+            
+            // 如果在分组详情页，返回首页
+            if (elements.groupDetailSection.style.display === 'block') {
+                elements.groupDetailSection.style.display = 'none';
+                elements.homeSection.style.display = 'block';
+                currentState.currentGroup = null;
+            }
         }
     });
 
@@ -212,11 +234,22 @@ function setupEventListeners() {
         }
     });
 
+    // 照片点击事件（首页标签浏览模式）
+    elements.galleryGrid.addEventListener('click', (e) => {
+        const photoItem = e.target.closest('.photo-item');
+        if (photoItem && currentState.tagViewMode) {
+            const photoIndex = parseInt(photoItem.dataset.index);
+            showPhotoModal(photoIndex);
+        }
+    });
+
     // 返回按钮事件
     elements.backButton.addEventListener('click', () => {
         elements.groupDetailSection.style.display = 'none';
         elements.homeSection.style.display = 'block';
         currentState.currentGroup = null;
+        currentState.tagViewMode = currentState.activeTag !== 'all';
+        renderGallery();
     });
 
     // 照片点击事件（分组详情页）
@@ -248,8 +281,11 @@ function setupEventListeners() {
     });
 
     elements.nextPhoto.addEventListener('click', () => {
-        const group = currentState.currentGroup;
-        if (group && currentState.currentPhotoIndex < group.photos.length - 1) {
+        const totalPhotos = currentState.tagViewMode ? 
+            currentState.currentTagPhotos.length : 
+            currentState.currentGroup.photos.length;
+        
+        if (currentState.currentPhotoIndex < totalPhotos - 1) {
             showPhotoModal(currentState.currentPhotoIndex + 1);
         }
     });
@@ -268,17 +304,5 @@ function setupEventListeners() {
     });
 }
 
-// 添加新照片组（示例函数）
-function addNewGroup(groupData) {
-    galleryData.groups.push(groupData);
-    renderGallery();
-}
-
-// 添加新分类（示例函数）
-function addNewCategory(categoryData) {
-    galleryData.categories.push(categoryData);
-    renderCategories();
-}
-
 // 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('DOMContentLoaded', loadGalleryData);
