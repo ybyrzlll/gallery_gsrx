@@ -247,7 +247,7 @@ body {
 .category-item {
     padding: 12px 15px;
     margin: 5px 0;
-    background: #34495e;
+    background: #d4edda;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -314,7 +314,8 @@ body {
 .category-item {
     padding: 12px 15px;
     margin: 5px 0;
-    background: #34495e;
+    background: #d4edda;
+    color: #155724;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
