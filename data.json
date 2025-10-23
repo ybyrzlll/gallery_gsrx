@@ -1,129 +1,655 @@
 {
   "tags": [
     {
-      "id": "family",
-      "name": "家庭",
-      "color": "#e74c3c"
-    },
-    {
-      "id": "travel",
-      "name": "旅行",
+      "id": "ai",
+      "name": "AI",
       "color": "#3498db"
     },
     {
-      "id": "nature",
-      "name": "自然",
+      "id": "friends",
+      "name": "朋友",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "scr",
+      "name": "视频聊天",
       "color": "#2ecc71"
     },
     {
-      "id": "portrait",
-      "name": "人像",
+      "id": "self",
+      "name": "自拍",
       "color": "#9b59b6"
     },
     {
-      "id": "urban",
-      "name": "城市",
+      "id": "work",
+      "name": "工作",
       "color": "#f39c12"
-    },
-    {
-      "id": "food",
-      "name": "美食",
-      "color": "#e67e22"
-    },
-    {
-      "id": "event",
-      "name": "活动",
-      "color": "#8e44ad"
     }
   ],
   "groups": [
     {
-      "id": "group1",
-      "name": "家庭聚会2024",
-      "description": "2024年家庭聚会的美好回忆",
-      "coverImage": "https://picsum.photos/400/300?random=1",
-      "tags": ["family", "event"],
+      "id": "ai",
+      "name": "AI作品集",
+      "description": "AI生成的艺术作品和创意设计",
+      "coverImage": "images/ai/ai18.JPG",
+      "tags": ["ai"],
       "photos": [
         {
-          "id": "photo1-1",
-          "title": "全家福合影",
-          "image": "https://picsum.photos/600/400?random=11",
-          "description": "温馨的全家福合影",
-          "tags": ["family", "portrait"]
+          "id": "ai-1",
+          "title": "AI创意设计1",
+          "image": "images/ai/ai1.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
         },
         {
-          "id": "photo1-2",
-          "title": "生日蛋糕",
-          "image": "https://picsum.photos/600/400?random=12",
-          "description": "美味的生日蛋糕",
-          "tags": ["family", "food", "event"]
+          "id": "ai-2",
+          "title": "AI创意设计2",
+          "image": "images/ai/ai2.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
         },
         {
-          "id": "photo1-3",
-          "title": "家庭聚餐",
-          "image": "https://picsum.photos/600/400?random=13",
-          "description": "欢乐的家庭聚餐时光",
-          "tags": ["family", "food"]
+          "id": "ai-3",
+          "title": "AI创意设计3",
+          "image": "images/ai/ai3.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-4",
+          "title": "AI创意设计4",
+          "image": "images/ai/ai4.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-5",
+          "title": "AI创意设计5",
+          "image": "images/ai/ai5.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-6",
+          "title": "AI创意设计6",
+          "image": "images/ai/ai6.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-7",
+          "title": "AI创意设计7",
+          "image": "images/ai/ai7.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-8",
+          "title": "AI创意设计8",
+          "image": "images/ai/ai8.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-9",
+          "title": "AI创意设计9",
+          "image": "images/ai/ai9.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-10",
+          "title": "AI创意设计10",
+          "image": "images/ai/ai10.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-11",
+          "title": "AI创意设计11",
+          "image": "images/ai/ai11.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-12",
+          "title": "AI创意设计12",
+          "image": "images/ai/ai12.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-13",
+          "title": "AI创意设计13",
+          "image": "images/ai/ai13.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-14",
+          "title": "AI创意设计14",
+          "image": "images/ai/ai14.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-15",
+          "title": "AI创意设计15",
+          "image": "images/ai/ai15.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-16",
+          "title": "AI创意设计16",
+          "image": "images/ai/ai16.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-17",
+          "title": "AI创意设计17",
+          "image": "images/ai/ai17.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-18",
+          "title": "AI创意设计18",
+          "image": "images/ai/ai18.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-19",
+          "title": "AI创意设计19",
+          "image": "images/ai/ai19.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-20",
+          "title": "AI创意设计20",
+          "image": "images/ai/ai20.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-21",
+          "title": "AI创意设计21",
+          "image": "images/ai/ai21.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-22",
+          "title": "AI创意设计22",
+          "image": "images/ai/ai22.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
+        },
+        {
+          "id": "ai-23",
+          "title": "AI创意设计23",
+          "image": "images/ai/ai23.jpg",
+          "description": "AI生成的艺术作品",
+          "tags": ["ai"]
         }
       ]
     },
     {
-      "id": "group2",
-      "name": "日本旅行2023",
-      "description": "2023年日本旅行的精彩瞬间",
-      "coverImage": "https://picsum.photos/400/300?random=2",
-      "tags": ["travel", "urban", "food"],
+      "id": "friends",
+      "name": "朋友时光",
+      "description": "与朋友共度的美好时光",
+      "coverImage": "images/friends/friends13.JPG",
+      "tags": ["friends"],
       "photos": [
         {
-          "id": "photo2-1",
-          "title": "东京塔夜景",
-          "image": "https://picsum.photos/600/400?random=21",
-          "description": "壮观的东京塔夜景",
-          "tags": ["travel", "urban", "night"]
+          "id": "friends-1",
+          "title": "朋友时光1",
+          "image": "images/friends/friends1.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
         },
         {
-          "id": "photo2-2",
-          "title": "京都寺庙",
-          "image": "https://picsum.photos/600/400?random=22",
-          "description": "古老的京都寺庙",
-          "tags": ["travel", "urban", "culture"]
+          "id": "friends-2",
+          "title": "朋友时光2",
+          "image": "images/friends/friends2.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
         },
         {
-          "id": "photo2-3",
-          "title": "寿司美食",
-          "image": "https://picsum.photos/600/400?random=23",
-          "description": "地道的日本寿司",
-          "tags": ["travel", "food"]
+          "id": "friends-3",
+          "title": "朋友时光3",
+          "image": "images/friends/friends3.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-4",
+          "title": "朋友时光4",
+          "image": "images/friends/friends4.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-5",
+          "title": "朋友时光5",
+          "image": "images/friends/friends5.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-6",
+          "title": "朋友时光6",
+          "image": "images/friends/friends6.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-7",
+          "title": "朋友时光7",
+          "image": "images/friends/friends7.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-8",
+          "title": "朋友时光8",
+          "image": "images/friends/friends8.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-9",
+          "title": "朋友时光9",
+          "image": "images/friends/friends9.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-10",
+          "title": "朋友时光10",
+          "image": "images/friends/friends10.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-11",
+          "title": "朋友时光11",
+          "image": "images/friends/friends11.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-12",
+          "title": "朋友时光12",
+          "image": "images/friends/friends12.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
+        },
+        {
+          "id": "friends-13",
+          "title": "朋友时光13",
+          "image": "images/friends/friends13.jpg",
+          "description": "与朋友共度的美好时光",
+          "tags": ["friends"]
         }
       ]
     },
     {
-      "id": "group3",
-      "name": "自然风光集",
-      "description": "大自然的壮丽景色",
-      "coverImage": "https://picsum.photos/400/300?random=3",
-      "tags": ["nature", "travel"],
+      "id": "scr",
+      "name": "视频聊天截图",
+      "description": "视频聊天中的精彩瞬间截图",
+      "coverImage": "images/scr/scr12.jpg",
+      "tags": ["scr"],
       "photos": [
         {
-          "id": "photo3-1",
-          "title": "山间日出",
-          "image": "https://picsum.photos/600/400?random=31",
-          "description": "壮丽的山间日出",
-          "tags": ["nature", "travel"]
+          "id": "scr-1",
+          "title": "视频聊天截图1",
+          "image": "images/scr/scr1.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
         },
         {
-          "id": "photo3-2",
-          "title": "森林小径",
-          "image": "https://picsum.photos/600/400?random=32",
-          "description": "宁静的森林小径",
-          "tags": ["nature"]
+          "id": "scr-2",
+          "title": "视频聊天截图2",
+          "image": "images/scr/scr2.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
         },
         {
-          "id": "photo3-3",
-          "title": "海边日落",
-          "image": "https://picsum.photos/600/400?random=33",
-          "description": "浪漫的海边日落",
-          "tags": ["nature", "travel"]
+          "id": "scr-3",
+          "title": "视频聊天截图3",
+          "image": "images/scr/scr3.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-4",
+          "title": "视频聊天截图4",
+          "image": "images/scr/scr4.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-5",
+          "title": "视频聊天截图5",
+          "image": "images/scr/scr5.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-6",
+          "title": "视频聊天截图6",
+          "image": "images/scr/scr6.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-7",
+          "title": "视频聊天截图7",
+          "image": "images/scr/scr7.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-8",
+          "title": "视频聊天截图8",
+          "image": "images/scr/scr8.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-9",
+          "title": "视频聊天截图9",
+          "image": "images/scr/scr9.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-10",
+          "title": "视频聊天截图10",
+          "image": "images/scr/scr10.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-11",
+          "title": "视频聊天截图11",
+          "image": "images/scr/scr11.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-12",
+          "title": "视频聊天截图12",
+          "image": "images/scr/scr12.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-13",
+          "title": "视频聊天截图13",
+          "image": "images/scr/scr13.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-14",
+          "title": "视频聊天截图14",
+          "image": "images/scr/scr14.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        },
+        {
+          "id": "scr-15",
+          "title": "视频聊天截图15",
+          "image": "images/scr/scr15.jpg",
+          "description": "视频聊天中的精彩瞬间",
+          "tags": ["scr"]
+        }
+      ]
+    },
+    {
+      "id": "self",
+      "name": "自拍集",
+      "description": "个人自拍和生活记录",
+      "coverImage": "images/self/self9.JPG",
+      "tags": ["self"],
+      "photos": [
+        {
+          "id": "self-1",
+          "title": "自拍1",
+          "image": "images/self/self1.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-2",
+          "title": "自拍2",
+          "image": "images/self/self2.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-3",
+          "title": "自拍3",
+          "image": "images/self/self3.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-4",
+          "title": "自拍4",
+          "image": "images/self/self4.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-5",
+          "title": "自拍5",
+          "image": "images/self/self5.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-6",
+          "title": "自拍6",
+          "image": "images/self/self6.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-7",
+          "title": "自拍7",
+          "image": "images/self/self7.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-8",
+          "title": "自拍8",
+          "image": "images/self/self8.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-9",
+          "title": "自拍9",
+          "image": "images/self/self9.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-10",
+          "title": "自拍10",
+          "image": "images/self/self10.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-11",
+          "title": "自拍11",
+          "image": "images/self/self11.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-12",
+          "title": "自拍12",
+          "image": "images/self/self12.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-13",
+          "title": "自拍13",
+          "image": "images/self/self13.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-14",
+          "title": "自拍14",
+          "image": "images/self/self14.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-15",
+          "title": "自拍15",
+          "image": "images/self/self15.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-16",
+          "title": "自拍16",
+          "image": "images/self/self16.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-17",
+          "title": "自拍17",
+          "image": "images/self/self17.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-18",
+          "title": "自拍18",
+          "image": "images/self/self18.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-19",
+          "title": "自拍19",
+          "image": "images/self/self19.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-20",
+          "title": "自拍20",
+          "image": "images/self/self20.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-21",
+          "title": "自拍21",
+          "image": "images/self/self21.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-22",
+          "title": "自拍22",
+          "image": "images/self/self22.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        },
+        {
+          "id": "self-23",
+          "title": "自拍23",
+          "image": "images/self/self23.jpg",
+          "description": "个人自拍记录",
+          "tags": ["self"]
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "name": "工作记录",
+      "description": "工作场景和项目记录",
+      "coverImage": "images/work/work7.JPG",
+      "tags": ["work"],
+      "photos": [
+        {
+          "id": "work-1",
+          "title": "工作记录1",
+          "image": "images/work/work1.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-2",
+          "title": "工作记录2",
+          "image": "images/work/work2.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-3",
+          "title": "工作记录3",
+          "image": "images/work/work3.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-4",
+          "title": "工作记录4",
+          "image": "images/work/work4.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-5",
+          "title": "工作记录5",
+          "image": "images/work/work5.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-6",
+          "title": "工作记录6",
+          "image": "images/work/work6.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-7",
+          "title": "工作记录7",
+          "image": "images/work/work7.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-8",
+          "title": "工作记录8",
+          "image": "images/work/work8.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
+        },
+        {
+          "id": "work-9",
+          "title": "工作记录9",
+          "image": "images/work/work9.jpg",
+          "description": "工作场景和项目记录",
+          "tags": ["work"]
         }
       ]
     }

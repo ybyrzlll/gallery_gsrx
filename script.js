@@ -265,10 +265,26 @@ function showTeletubbiesVideo() {
 
 // 显示相册界面
 function showGalleryInterface() {
+    console.log('显示相册界面，包括侧边栏');
+    
     // 显示相册内容
     elements.homeSection.style.display = 'block';
+    
+    // 确保侧边栏正确显示
     elements.sidebar.style.display = 'block';
-    elements.welcomeBtn.style.display = 'block';
+    elements.sidebar.style.visibility = 'visible';
+    elements.sidebar.style.opacity = '1';
+    
+    // 确保侧边栏没有被折叠
+    elements.sidebar.classList.remove('collapsed');
+    elements.mainContent.classList.remove('expanded');
+    
+    // 隐藏静音按钮
+    elements.welcomeBtn.style.display = 'none';
+    
+    // 重新渲染标签列表，确保内容正确显示
+    renderTags();
+    renderGallery();
 }
 
 // 播放背景音乐
@@ -302,6 +318,9 @@ function playBackgroundMusic() {
             console.log('音乐播放成功！');
             console.log('音乐音量:', elements.backgroundMusic.volume);
             console.log('是否静音:', elements.backgroundMusic.muted);
+            
+            // 更新静音按钮状态
+            updateMuteButton();
         }).catch(e => {
             console.log('直接播放失败，尝试静音播放:', e.name);
             
@@ -314,6 +333,9 @@ function playBackgroundMusic() {
                 setTimeout(() => {
                     elements.backgroundMusic.muted = false;
                     console.log('取消音乐静音');
+                    
+                    // 更新静音按钮状态
+                    updateMuteButton();
                 }, 500);
                 
             }).catch(e2 => {
@@ -345,6 +367,31 @@ function playBackgroundMusic() {
 // 暂停背景音乐
 function pauseBackgroundMusic() {
     elements.backgroundMusic.pause();
+}
+
+// 更新静音按钮状态
+function updateMuteButton() {
+    if (elements.backgroundMusic.muted) {
+        elements.welcomeBtn.innerHTML = '🔊 取消静音';
+    } else {
+        elements.welcomeBtn.innerHTML = '🔇 静音';
+    }
+}
+
+// 静音/取消静音切换
+function toggleMute() {
+    if (elements.backgroundMusic.muted) {
+        // 取消静音
+        elements.backgroundMusic.muted = false;
+        console.log('取消静音');
+    } else {
+        // 开启静音
+        elements.backgroundMusic.muted = true;
+        console.log('开启静音');
+    }
+    
+    // 更新按钮状态
+    updateMuteButton();
 }
 
 // 关闭视频播放器
@@ -478,8 +525,8 @@ function setupEventListeners() {
         showTeletubbiesVideo();
     });
 
-    // 天线宝宝相关事件监听器
-    elements.welcomeBtn.addEventListener('click', showTeletubbiesVideo);
+    // 静音/取消静音控制
+    elements.welcomeBtn.addEventListener('click', toggleMute);
     elements.closePlayer.addEventListener('click', closeTeletubbiesPlayer);
     elements.closeVideo.addEventListener('click', closeTeletubbiesPlayer);
     elements.playMusic.addEventListener('click', playBackgroundMusic);
