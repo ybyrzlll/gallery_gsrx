@@ -39,40 +39,40 @@
   "groups": [
     {
       "id": "group1",
-      "name": "视频聊天",
-      "description": "视频聊天",
-      "coverImage": "images/scr1.jpg",
-      "tags": ["scr", "event"],
+      "name": "家庭聚会2024",
+      "description": "2024年家庭聚会的美好回忆",
+      "coverImage": "https://picsum.photos/400/300?random=1",
+      "tags": ["family", "event"],
       "photos": [
         {
           "id": "photo1-1",
           "title": "全家福合影",
-          "image": "images/scr2.jpg",
+          "image": "https://picsum.photos/600/400?random=11",
           "description": "温馨的全家福合影",
-          "tags": ["scr", "portrait"]
+          "tags": ["family", "portrait"]
         },
         {
           "id": "photo1-2",
           "title": "生日蛋糕",
-          "image": "images/scr3.jpg",
+          "image": "https://picsum.photos/600/400?random=12",
           "description": "美味的生日蛋糕",
-          "tags": ["scr", "food", "event"]
+          "tags": ["family", "food", "event"]
         },
         {
           "id": "photo1-3",
           "title": "家庭聚餐",
-          "image": "images/scr4.jpg",
+          "image": "https://picsum.photos/600/400?random=13",
           "description": "欢乐的家庭聚餐时光",
-          "tags": ["scr", "food"]
+          "tags": ["family", "food"]
         }
       ]
     },
     {
       "id": "group2",
-      "name": "直播",
-      "description": "直播",
-      "coverImage": "images/zb1.jpg",
-      "tags": ["zb", "urban", "food"],
+      "name": "日本旅行2023",
+      "description": "2023年日本旅行的精彩瞬间",
+      "coverImage": "https://picsum.photos/400/300?random=2",
+      "tags": ["travel", "urban", "food"],
       "photos": [
         {
           "id": "photo2-1",
@@ -99,10 +99,10 @@
     },
     {
       "id": "group3",
-      "name": "合照",
-      "description": "合照",
-      "coverImage": "images/hezhao1.jpg",
-      "tags": ["hezhao", "travel"],
+      "name": "自然风光集",
+      "description": "大自然的壮丽景色",
+      "coverImage": "https://picsum.photos/400/300?random=3",
+      "tags": ["nature", "travel"],
       "photos": [
         {
           "id": "photo3-1",

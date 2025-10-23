@@ -38,7 +38,10 @@ const elements = {
     playMusic: document.getElementById('playMusic'),
     pauseMusic: document.getElementById('pauseMusic'),
     closeVideo: document.getElementById('closeVideo'),
-    welcomeBtn: document.getElementById('welcomeBtn')
+    welcomeBtn: document.getElementById('welcomeBtn'),
+    // 启动屏幕元素
+    startScreen: document.getElementById('startScreen'),
+    startBtn: document.getElementById('startBtn')
 };
 
 // 加载数据文件
@@ -203,29 +206,141 @@ function showPhotoModal(photoIndex) {
 
 // 天线宝宝视频和音乐配置
 const teletubbiesConfig = {
-    // 可以使用在线视频链接（示例链接，您需要替换为实际可用的链接）
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    // 可以使用在线音乐链接（示例链接，您需要替换为实际可用的链接）
-    musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    // 使用本地文件（将您的文件放入media文件夹）
+    videoUrl: "media/teletubbies.mp4",
+    musicUrl: "media/happy_music.mp3",
+    // 是否自动播放
+    autoPlay: true
 };
 
 // 显示天线宝宝视频
 function showTeletubbiesVideo() {
-    // 设置视频源
-    elements.teletubbiesVideo.src = teletubbiesConfig.videoUrl;
+    console.log('开始播放视频和音乐...');
+    
     // 显示播放器
     elements.teletubbiesPlayer.style.display = 'flex';
-    // 自动播放音乐
+    // 隐藏相册内容
+    elements.homeSection.style.display = 'none';
+    elements.sidebar.style.display = 'none';
+    elements.welcomeBtn.style.display = 'none';
+    
+    // 重置视频状态
+    elements.teletubbiesVideo.currentTime = 0;
+    elements.teletubbiesVideo.pause();
+    
+    // 设置视频源
+    elements.teletubbiesVideo.src = teletubbiesConfig.videoUrl;
+    
+    // 预加载视频
+    elements.teletubbiesVideo.preload = "auto";
+    
+    // 立即开始播放音乐（使用静音策略）
     playBackgroundMusic();
+    
+    // 使用静音自动播放视频（浏览器允许）
+    elements.teletubbiesVideo.muted = true;
+    elements.teletubbiesVideo.autoplay = true;
+    
+    // 监听视频开始播放
+    elements.teletubbiesVideo.onplaying = function() {
+        console.log('视频开始自动播放');
+    };
+    
+    // 监听视频结束事件
+    elements.teletubbiesVideo.onended = function() {
+        console.log('视频播放结束');
+        closeTeletubbiesPlayer();
+        showGalleryInterface();
+    };
+    
+    // 如果视频加载失败，设置超时处理
+    elements.teletubbiesVideo.onerror = function() {
+        console.log('视频加载失败，直接进入相册界面');
+        setTimeout(() => {
+            closeTeletubbiesPlayer();
+            showGalleryInterface();
+        }, 2000);
+    };
+}
+
+// 显示相册界面
+function showGalleryInterface() {
+    // 显示相册内容
+    elements.homeSection.style.display = 'block';
+    elements.sidebar.style.display = 'block';
+    elements.welcomeBtn.style.display = 'block';
 }
 
 // 播放背景音乐
 function playBackgroundMusic() {
+    console.log('开始播放背景音乐...');
+    
+    // 如果音乐已经在播放，直接返回
+    if (!elements.backgroundMusic.paused) {
+        console.log('音乐已经在播放中');
+        return;
+    }
+    
+    // 设置音乐源
     elements.backgroundMusic.src = teletubbiesConfig.musicUrl;
-    elements.backgroundMusic.play().catch(e => {
-        console.log('音乐播放需要用户交互:', e);
-    });
+    
+    // 设置音乐循环播放
+    elements.backgroundMusic.loop = true;
+    
+    // 设置预加载
+    elements.backgroundMusic.preload = "auto";
+    
+    // 直接尝试播放（不静音）
+    const playMusic = () => {
+        console.log('尝试直接播放音乐...');
+        
+        // 确保音乐没有静音
+        elements.backgroundMusic.muted = false;
+        elements.backgroundMusic.volume = 1.0;
+        
+        elements.backgroundMusic.play().then(() => {
+            console.log('音乐播放成功！');
+            console.log('音乐音量:', elements.backgroundMusic.volume);
+            console.log('是否静音:', elements.backgroundMusic.muted);
+        }).catch(e => {
+            console.log('直接播放失败，尝试静音播放:', e.name);
+            
+            // 如果直接播放失败，尝试静音播放
+            elements.backgroundMusic.muted = true;
+            elements.backgroundMusic.play().then(() => {
+                console.log('音乐静音播放成功');
+                
+                // 静音播放成功后尝试取消静音
+                setTimeout(() => {
+                    elements.backgroundMusic.muted = false;
+                    console.log('取消音乐静音');
+                }, 500);
+                
+            }).catch(e2 => {
+                console.log('静音播放也失败:', e2.name);
+            });
+        });
+    };
+    
+    // 等待音乐可以播放
+    if (elements.backgroundMusic.readyState >= 3) {
+        console.log('音乐已准备好，开始播放');
+        playMusic();
+    } else {
+        console.log('等待音乐加载完成...');
+        elements.backgroundMusic.oncanplaythrough = function() {
+            console.log('音乐可以播放了');
+            playMusic();
+        };
+    }
+    
+    // 添加加载错误处理
+    elements.backgroundMusic.onerror = function(e) {
+        console.log('音乐加载错误:', e);
+    };
 }
+
+
 
 // 暂停背景音乐
 function pauseBackgroundMusic() {
@@ -237,7 +352,7 @@ function closeTeletubbiesPlayer() {
     elements.teletubbiesPlayer.style.display = 'none';
     elements.teletubbiesVideo.pause();
     elements.teletubbiesVideo.currentTime = 0;
-    pauseBackgroundMusic();
+    // 不暂停音乐，让音乐继续循环播放
 }
 
 // 设置事件监听器
@@ -355,6 +470,14 @@ function setupEventListeners() {
         }
     });
 
+    // 启动按钮事件监听器
+    elements.startBtn.addEventListener('click', function() {
+        // 隐藏启动屏幕
+        elements.startScreen.style.display = 'none';
+        // 显示视频播放器
+        showTeletubbiesVideo();
+    });
+
     // 天线宝宝相关事件监听器
     elements.welcomeBtn.addEventListener('click', showTeletubbiesVideo);
     elements.closePlayer.addEventListener('click', closeTeletubbiesPlayer);
@@ -371,4 +494,70 @@ function setupEventListeners() {
 }
 
 // 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', loadGalleryData);
+document.addEventListener('DOMContentLoaded', function() {
+    // 先加载相册数据
+    loadGalleryData();
+    
+    // 预加载音乐和视频
+    preloadBackgroundMusic();
+    
+    // 创建一个透明的全屏覆盖层来捕获用户交互
+    createInteractionOverlay();
+});
+
+// 创建交互覆盖层
+function createInteractionOverlay() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        z-index: 9999;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    `;
+    
+    overlay.innerHTML = `
+        <div style="text-align: center; color: white;">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 0 10px rgba(255,255,255,0.5);">
+                 点击屏幕开始体验
+            </h1>
+            <div style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.5;">
+                （点击屏幕开始体验）
+            </div>
+        </div>
+    `;
+    
+    overlay.onclick = function() {
+        console.log('用户交互触发，开始播放视频和音乐');
+        overlay.remove();
+        showTeletubbiesVideo();
+    };
+    
+    // 移除自动播放，必须通过点击
+    // 不再设置自动播放超时
+    
+    document.body.appendChild(overlay);
+}
+
+// 预加载背景音乐
+function preloadBackgroundMusic() {
+    console.log('预加载背景音乐...');
+    
+    // 创建隐藏的音频元素用于预加载
+    const preloadAudio = new Audio();
+    preloadAudio.src = teletubbiesConfig.musicUrl;
+    preloadAudio.preload = "auto";
+    preloadAudio.load();
+    
+    // 设置主音频元素的源
+    elements.backgroundMusic.src = teletubbiesConfig.musicUrl;
+    elements.backgroundMusic.loop = true;
+    elements.backgroundMusic.preload = "auto";
+}
