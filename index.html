@@ -57,6 +57,34 @@
         </div>
     </div>
 
+    <!-- 天线宝宝视频播放器 -->
+    <div class="teletubbies-player" id="teletubbiesPlayer" style="display: none;">
+        <div class="player-content">
+            <span class="close-player" id="closePlayer">&times;</span>
+            <h3>天线宝宝来啦！</h3>
+            <video id="teletubbiesVideo" controls autoplay>
+                <source src="" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+            <div class="player-controls">
+                <button id="playMusic">播放音乐</button>
+                <button id="pauseMusic">暂停音乐</button>
+                <button id="closeVideo">关闭视频</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="backgroundMusic" loop>
+        <source src="" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <!-- 欢迎按钮 -->
+    <button class="welcome-btn" id="welcomeBtn">
+        🎵 天线宝宝来啦！
+    </button>
+
     <script src="script.js"></script>
 </body>
 </html>

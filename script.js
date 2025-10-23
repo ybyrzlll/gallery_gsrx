@@ -29,7 +29,16 @@ const elements = {
     sidebar: document.getElementById('sidebar'),
     toggleSidebar: document.getElementById('toggleSidebar'),
     expandSidebar: document.getElementById('expandSidebar'),
-    mainContent: document.querySelector('.main-content')
+    mainContent: document.querySelector('.main-content'),
+    // 天线宝宝相关元素
+    teletubbiesPlayer: document.getElementById('teletubbiesPlayer'),
+    teletubbiesVideo: document.getElementById('teletubbiesVideo'),
+    closePlayer: document.getElementById('closePlayer'),
+    backgroundMusic: document.getElementById('backgroundMusic'),
+    playMusic: document.getElementById('playMusic'),
+    pauseMusic: document.getElementById('pauseMusic'),
+    closeVideo: document.getElementById('closeVideo'),
+    welcomeBtn: document.getElementById('welcomeBtn')
 };
 
 // 加载数据文件
@@ -192,6 +201,45 @@ function showPhotoModal(photoIndex) {
     elements.photoModal.style.display = 'flex';
 }
 
+// 天线宝宝视频和音乐配置
+const teletubbiesConfig = {
+    // 可以使用在线视频链接（示例链接，您需要替换为实际可用的链接）
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    // 可以使用在线音乐链接（示例链接，您需要替换为实际可用的链接）
+    musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+};
+
+// 显示天线宝宝视频
+function showTeletubbiesVideo() {
+    // 设置视频源
+    elements.teletubbiesVideo.src = teletubbiesConfig.videoUrl;
+    // 显示播放器
+    elements.teletubbiesPlayer.style.display = 'flex';
+    // 自动播放音乐
+    playBackgroundMusic();
+}
+
+// 播放背景音乐
+function playBackgroundMusic() {
+    elements.backgroundMusic.src = teletubbiesConfig.musicUrl;
+    elements.backgroundMusic.play().catch(e => {
+        console.log('音乐播放需要用户交互:', e);
+    });
+}
+
+// 暂停背景音乐
+function pauseBackgroundMusic() {
+    elements.backgroundMusic.pause();
+}
+
+// 关闭视频播放器
+function closeTeletubbiesPlayer() {
+    elements.teletubbiesPlayer.style.display = 'none';
+    elements.teletubbiesVideo.pause();
+    elements.teletubbiesVideo.currentTime = 0;
+    pauseBackgroundMusic();
+}
+
 // 设置事件监听器
 function setupEventListeners() {
     // 侧边栏折叠事件
@@ -300,6 +348,24 @@ function setupEventListeners() {
             } else if (e.key === 'Escape') {
                 elements.photoModal.style.display = 'none';
             }
+        }
+        // 视频播放器的ESC键关闭
+        if (elements.teletubbiesPlayer.style.display === 'flex' && e.key === 'Escape') {
+            closeTeletubbiesPlayer();
+        }
+    });
+
+    // 天线宝宝相关事件监听器
+    elements.welcomeBtn.addEventListener('click', showTeletubbiesVideo);
+    elements.closePlayer.addEventListener('click', closeTeletubbiesPlayer);
+    elements.closeVideo.addEventListener('click', closeTeletubbiesPlayer);
+    elements.playMusic.addEventListener('click', playBackgroundMusic);
+    elements.pauseMusic.addEventListener('click', pauseBackgroundMusic);
+
+    // 视频播放器外部点击关闭
+    elements.teletubbiesPlayer.addEventListener('click', (e) => {
+        if (e.target === elements.teletubbiesPlayer) {
+            closeTeletubbiesPlayer();
         }
     });
 }
