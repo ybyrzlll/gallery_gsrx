@@ -4,7 +4,7 @@
 
 ## 在线演示
 
-[点击查看在线演示（main分支）](https://ybyrzlll.github.io/gallery_gsrx/)
+[点击查看在线演示](https://ybyrzlll.github.io/gallery_gsrx/)
 
 ## 功能特性
 
