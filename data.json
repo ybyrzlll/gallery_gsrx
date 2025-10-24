@@ -31,7 +31,7 @@
       "id": "ai",
       "name": "AI作品集",
       "description": "AI生成的艺术作品和创意设计",
-      "coverImage": "images/ai/ai18.JPG",
+      "coverImage": "images/ai/ai18.jpg",
       "tags": ["ai"],
       "photos": [
         {
@@ -201,7 +201,7 @@
       "id": "friends",
       "name": "朋友时光",
       "description": "与朋友共度的美好时光",
-      "coverImage": "images/friends/friends13.JPG",
+      "coverImage": "images/friends/friends13.jpg",
       "tags": ["friends"],
       "photos": [
         {
@@ -415,7 +415,7 @@
       "id": "self",
       "name": "自拍集",
       "description": "个人自拍和生活记录",
-      "coverImage": "images/self/self9.JPG",
+      "coverImage": "images/self/self9.jpg",
       "tags": ["self"],
       "photos": [
         {
@@ -585,7 +585,7 @@
       "id": "work",
       "name": "工作记录",
       "description": "工作场景和项目记录",
-      "coverImage": "images/work/work8.JPG",
+      "coverImage": "images/work/work8.jpg",
       "tags": ["work"],
       "photos": [
         {
