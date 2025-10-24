@@ -44,21 +44,21 @@
         {
           "id": "ai-2",
           "title": "AI创意设计2",
-          "image": "images/ai/ai2.jpg",
+          "image": "images/ai/ai2.JPG",
           "description": "AI生成的艺术作品",
           "tags": ["ai"]
         },
         {
           "id": "ai-3",
           "title": "AI创意设计3",
-          "image": "images/ai/ai3.jpg",
+          "image": "images/ai/ai3.JPG",
           "description": "AI生成的艺术作品",
           "tags": ["ai"]
         },
         {
           "id": "ai-4",
           "title": "AI创意设计4",
-          "image": "images/ai/ai4.jpg",
+          "image": "images/ai/ai4.JPG",
           "description": "AI生成的艺术作品",
           "tags": ["ai"]
         },
